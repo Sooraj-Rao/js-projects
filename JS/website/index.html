@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;400&family=Poppins:wght@500&display=swap" -->
+        <!-- rel="stylesheet"> -->
+</head>
+
+<body>
+    <nav>
+        <img src="../img/logo.png" alt="" srcset="">
+        <div class="head">
+            <h4>Home</h4>
+            <h4>About</h4>
+            <h4>Services</h4>
+            <h4>Contact Us</h4>
+            <div class="parent">
+                <div class="child"></div>
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="info">
+            <h1>Learn From The Experts Of The <span id="text"></span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum voluptates officiis hic commodi debitis
+                mollitia numquam sapiente quos delectus saepe omnis totam dolor, architecto nihil ratione nulla
+                perferendis sed voluptas.</p>
+            <button>Explore</button>
+        </div>
+        <div class="img">
+            <img src="/img/learning.png" alt="">
+        </div>
+    </div>
+    <script>
+        let par = document.querySelector('.parent');
+        let chi = document.querySelector('.child');
+        
+        par.onclick = () => {
+            chi.classList.toggle('move');
+            document.body.classList.toggle('dark-theme');
+        }
+
+        let typingEffect=new Typed("#text",{
+        strings:["Coding World","Tech Comapnies","Web Development",""],
+        loop:true,
+        typeSpeed:100,
+        backSpeed:50,
+        backdelay:1000
+        })   
+
+    </script>
+  
+</body>
+
+</html>

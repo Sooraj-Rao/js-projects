@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body{
+        background-color: rgb(198, 203, 207);
+    }
+    .main{
+        margin: 150px auto;
+        width: 40vw;
+        height: 50vh;
+        border-radius: 10px;
+        background-color: white;
+        text-align: center;
+        position: relative;
+    }
+    h1{
+        padding-top: 10px;
+        position: relative;
+    }
+    h1::after{
+        position: absolute;
+        content: '';
+        height: 0px;
+        width: 100px;
+        border: 3px solid black;
+        top: 100%;
+        left: 40%;
+        border-color: rgb(14, 83, 174);
+    }
+    button{
+        height:40px;
+        width: 10vw;
+        border-radius: 20px;
+        outline: none;
+        margin: 10px;
+        text-align: center;
+        background-color: rgb(8, 235, 209);
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+    }
+    button img{
+        height: 20px;
+        width: 20px;
+        margin-right: 10px;
+    }
+    h3{
+        position: absolute;
+        right: 15%;
+        bottom: 30%;
+    }
+    h2{
+        width: 90%;
+        max-height: 150px;
+        min-height: 150px;
+        padding: 30px;
+    }
+    .show{
+        margin-top:-20px;
+        display: flex;
+        justify-content:center;
+        height: 50px;
+        width: 100%;
+        align-items: center;
+    }
+    .twit{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border:1px solid;
+    }
+    @media (max-width:600px){
+        .main{
+            width: 92%;
+            height:70vh;
+            margin: 10px;
+        }
+        h1::after{
+            top:8vh;
+            left:30vw;
+        }
+        h2{
+            overflow: hidden;
+            padding:20px 10px;
+        }
+        h3{
+            bottom:40%;
+        }
+        .show{
+            margin: 100px 0;
+        }
+        #new{
+            width: 40vw;
+            height: 8vh;
+        }
+        .twit{
+            height: 8vh;
+            width: 40vw;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="main">
+        <h1>Quote of the day</h1>
+        <h2>Loading..</h2>
+        <h3>Loading..</h3>
+        <div class="show">
+        <button id="new">New Quote</button>
+        <button onclick="twit()" class="twit">
+            <img src="img/twitter.png" >
+            Share</button>
+        </div>
+    </div>
+</body>
+<script>
+    let quote=document.getElementsByTagName('h2')[0];
+    let author=document.getElementsByTagName('h3')[0];
+    let but=document.getElementsByTagName('button')[0];
+
+    let api_url="https://api.quotable.io/random";
+
+    async function getquote(url){
+        const response=await fetch(url);
+        let data=await response.json();
+        quote.innerText=data.content;
+        author.innerText="-"+data.author;
+    }
+    getquote(api_url);
+    but.addEventListener("click",function(){
+        getquote(api_url) ;
+    })
+    function twit(){
+        window.open("https://twitter.com/intent/tweet?text="+quote.innerText)
+    }
+</script>
+</html>

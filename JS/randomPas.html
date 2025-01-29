@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: rgb(0, 31, 58);
+        }
+
+        .main {
+            width: 40vw;
+            height: 50vh;
+            margin: 10% auto;
+        }
+
+        h1,
+        span {
+            font-weight: bold;
+            font-size: 5vh;
+            padding: 15px 0 0 20px;
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        span {
+            color: rgb(16, 135, 91);
+            position: relative;
+        }
+
+        span::after {
+            content: '';
+            height: 0px;
+            width: 320px;
+            border: 2px solid black;
+            border-color: green;
+            position: absolute;
+            bottom: 0;
+            left: 6%;
+        }
+
+        button {
+            height: 6vh;
+            width: 21vw;
+            margin: 20px 0 0 20px;
+            background-color: rgb(0, 139, 82);
+            color: white;
+            outline: none;
+            border: none;
+            font-size: 3vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button img {
+            /* background-color: white; */
+            width: 3w;
+            height: 60%;
+        }
+
+        .in {
+            margin: 20px 0 10px 20px;
+            height: 7vh;
+            width: 28vw;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius:4px ;
+        }
+
+        .in img {
+            height: 5vh;
+            margin: 2px 10px 0 0;
+            width: 2vw;
+            cursor: pointer;
+        }
+
+        input {
+            font-size: 20px;
+            height: 7vh;
+            width: 10vw;
+            background: white;
+            margin: 20px 20px;
+            width: 30vw;
+            border: none;
+            outline: none;
+            display: flex;
+            justify-content: end;
+            /* border-radius: 7px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Generate a </h1><span>Random Password</span>
+        <div class="in">
+            <input type="text" placeholder="Password" readonly><img onclick="copyPass();" src="/img/copy.png" alt=""
+                srcset="">
+        </div>
+        <button onclick="createPassword()"><img src="/img/flash.png" alt="">
+            <p>Generate Password</p>
+        </button>
+    </div>
+</body>
+<script>
+    let passwordBox=document.getElementsByTagName('input')[0];
+    len=12;
+    let cap="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let sma="abcdefhijklmnopqrstuvwxyz";
+    let num="0123456789";
+    let spl="@#$%&_"
+    let chars=sma+num;
+
+    function createPassword(){
+    let Password=" ";
+    Password+=cap[Math.floor(Math.random()*cap.length)];
+    Password+=sma[Math.floor(Math.random()*sma.length)];
+    Password+=num[Math.floor(Math.random()*num.length)];
+    Password+=spl[Math.floor(Math.random()*spl.length)];
+        console.log(Password);
+    while(Password.length<=len){
+        Password+=chars[Math.floor(Math.random()*chars.length)];
+    }
+    passwordBox.value=Password;    
+    }
+    function copyPass() {
+        passwordBox.select();
+        document.execCommand("copy");
+    }
+</script>
+
+</html>
+
+
+
+

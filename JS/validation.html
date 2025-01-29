@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      width: 30vh;
+      height: 10vh;
+      font-size: large;
+    }
+
+    h1 {
+      margin: 0 9%;
+    }
+  </style>
+</head> 
+<body>
+  <input type="text" onkeyup="Fname()" placeholder="name">
+  <input type="text" onkeyup="Fphone()" placeholder="phone" maxlength="10">
+  <input type="text" onkeyup="Femail()" placeholder="email">
+  <input type="text" onkeyup="Fmsg()" placeholder="msg">
+  <div style="display: flex;">
+    <h1>s</h1>
+    <h1>f</h1>
+    <h1>d</h1>
+    <h1>h</h1>
+  </div>
+</body>
+<script>
+  let nameError = document.getElementsByTagName('h1')[0];
+  let emailError = document.getElementsByTagName('h1')[2];
+  let phoneError = document.getElementsByTagName('h1')[1];
+  let msgError = document.getElementsByTagName('h1')[3];
+
+  function Fname() {
+    let name = document.getElementsByTagName('input')[0].value;
+
+    if (name.length == 0) {
+      nameError.innerHTML = "Plese add name";
+    }
+    else if (!name.match(/^[a-zA-Z]+ [a-zA-Z]*$/)){         //correct
+      nameError.innerHTML = "Write full name";
+    } else {
+      nameError.innerHTML = `valid`;
+    }
+  }
+
+
+  function Fphone() {
+    let phone = document.getElementsByTagName('input')[1].value;
+
+    if (phone.length ==0) {
+      phoneError.innerHTML = "Please add number";
+    }
+    else if (phone.length != 10) {
+      phoneError.innerHTML = "10 digit required";
+    }
+    else if (!phone.match(/^[0-9]{10}$/)) {             // /^\d{10}$/  for digit with 10 digit else remove {10};
+      phoneError.innerHTML = "only digit required";
+    }
+     else {
+      phoneError.innerHTML = `valid`;
+    }
+  }
+  function Femail() {
+    let email = document.getElementsByTagName('input')[2].value;
+    if (email.length ==0) {
+      emailError.innerHTML = "Please add Email";
+    }
+    else if (!email.match(/^[a-zA-Z0-9_*&.]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/)) {
+      emailError.innerHTML = "Email pattern wrong";
+    }
+     else {
+      emailError.innerHTML = `valid`;
+    }
+  }
+ 
+  function Fmsg() {
+    let msg = document.getElementsByTagName('input')[3].value;
+    if (msg.length ==0) {
+      msgError.innerHTML = "Please add Message";
+    }
+    else if (!msg.match(/^([a-zA-Z0-9]\s?){30,}$/)) {
+      msgError.innerHTML = "Include atleast 30 characters";
+    }
+     else {
+      msgError.innerHTML = `valid`;
+    }
+  }
+
+</script>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        nav{
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .anchor{
+            font-size: 17px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width:550px;
+            height: 100%;
+        }
+        .anchor a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: red;
+        }
+        #login{
+            width: 150px;
+            height: 100%;
+            background: rgb(247, 11, 11);
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            cursor: pointer;
+        }
+       #login:hover{
+        background: rgb(234, 10, 10);
+       }
+        .body{
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            background-image: url('./img/img.jpg');
+            background-position-x: -100px;
+            background-position-y: -50px;
+        }
+        .form{
+            /* z-index: 10; */
+            width: 600px;
+            height: 280px;
+            background: white;
+            margin:50px auto;
+          display: flex;
+          flex-direction: column;
+        }
+        .form h1{
+            padding: 10px 0 0 20px;
+            margin-bottom: 20px;
+        }
+        .form input {
+            margin:10px 20px ;
+            height: 35px;
+            width: 93%;
+            border: 1px solid rgb(205, 196, 196);
+        }
+      
+        .inner, .inner2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.711);
+        }
+        .inner2{
+            align-items:normal;
+            background: rgba(0, 0, 0, 0.908);
+            color: white;
+        }
+       .form button{
+        margin:10px 20px ;
+        width: 13%;
+        height: 40px;
+        background: rgb(205, 20, 20);
+        color: white;
+        border: none;
+        font-size: 17px;
+        cursor: pointer;
+       }
+       button:hover{
+        background: rgb(161, 15, 15);
+        }
+       label{
+        margin-left: 20px;
+       }
+       .plain{
+        width: 100%;
+        height: 50px;
+        background-color: white;
+       }
+       .footer{
+        width: 100%;
+        height: 380px;
+            background-image: url('./img/img.jpg');
+            background-position-y: -250px;
+            background-size: cover;
+       }
+       .content{
+        margin-left: 100px;
+        width: 300px;
+        height: 260px;
+        z-index: 0;
+        position: relative;
+    }
+    h2{
+        margin:50px 0 10px -10px;
+    }
+    span{
+
+        line-height: 35px;
+    }
+    .content::after{
+        position: absolute;
+        content: '';
+        width:90vw;
+        height: 0px;
+        border: 0.1px solid rgb(71, 70, 70);
+        transform: rotate(180deg);
+        top: 280px;
+        left: -50px;
+    }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <nav>
+            <img src="./img/mylogo.png" alt="" width="350px" height="100%">
+            <div class="anchor">
+                <a href="">HOME</a>
+                <a href="">ABOUT</a>
+                <a href="">REGISTRATION</a>
+                <button id="login">LOGIN</button>
+            </div>
+           
+        </nav>
+        <div class="body">
+            <div class="inner">
+                <div class="form">
+                    <h1>Login</h1>
+                    <label for="">Email</label>
+                    <input class="input" type="text" name="" id="">
+                    <label for="">Password</label>
+                    <input class="input" type="text" name="" id="">
+                    <button type="submit">LOGIN</button>
+                </div>
+            </div>
+           
+        </div>
+        <div class="plain">
+
+        </div>
+        <div class="footer">
+            <div class="inner2">
+                    <div class="content">
+                        <h2>Address</h3>
+                        <span>DR.B.R.Ambedkar Circle,Balmatta<br/>
+
+                            Managalore 574001<br/>
+                        
+                        +91 98345 67890<br/>
+                        
+                        findmymechanic@gmail.com</span>
+                        
+                    </div>
+                   <h4 style="text-align: center;">@copyright</h4>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+</script>
+</html>

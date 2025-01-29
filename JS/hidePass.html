@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 90vh;
+            width: 97vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main {
+            width: 20vw;
+            height: 7vh;
+            display: flex;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        input {
+            border: none;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            outline: none;
+            width: 78%;
+            font-size: 3.5vh;
+            padding-left: 10px;
+        }
+
+        img {
+            width: 25px;
+            height: 20px;
+            padding:15px 0 0 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <input type="text">
+        <img src="img/eye-fill.png" alt="" onclick="clic()">
+    </div>
+</body>
+<script>
+    let i = true;
+    let imgg = document.getElementsByTagName('img')[0];
+    let inputt = document.getElementsByTagName('input')[0];
+    // function clic() {
+    //     if (i) {
+    //         imgg.src = "img/eye-off-fill.png";
+    //         inputt.setAttribute("type", "password");
+    //         i = false;
+    //     } else {
+    //         imgg.src = "img/eye-fill.png";
+    //         inputt.setAttribute("type", "text");
+    //         i = true;
+    //     }
+    // }
+
+    function clic(){
+        if(inputt.type=="password"){
+            imgg.src = "img/eye-fill.png";
+            inputt.type="text";
+        }else{
+            inputt.type="password";
+            imgg.src = "img/eye-off-fill.png";
+        }
+    }
+</script>
+
+</html>

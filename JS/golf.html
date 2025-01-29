@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+        color: #fff;
+      }
+      .nav {
+        height: 140px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 50px;
+        padding: 0 130px;
+        position: fixed;
+        z-index: 9;
+      }
+      .nav img {
+        height: 75px;
+      }
+      .nav h4 {
+        text-transform: uppercase;
+      }
+      video {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: fixed;
+        z-index: -1;
+      }
+
+      .cursors {
+        height: 25px;
+        width: 25px;
+        background-color: #76e014;
+        border-radius: 50%;
+        position: fixed;
+        z-index: 1;
+        transition: 0.1s;
+      }
+      .cursor-blur {
+        transition: 0.1s;
+        height:400px;
+        width: 400px;
+        background-color: #77e01437;
+        border-radius: 50%;
+        position: fixed;
+        z-index: 1;
+        filter: blur(50px);
+      }
+
+      .main {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.66);
+      }
+      .page1 {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+      }
+      .page1 h1 {
+        font-size: 140px;
+        font-weight: 900;
+        position: relative;
+      }
+      .page1 h1::before {
+        content: "EAT. DRINK. PLAY.";
+        position: absolute;
+        color: black;
+        top: -4px;
+        left: -4px;
+        -webkit-text-stroke: 2px #b1ed0c;
+        z-index: -1;
+      }
+      .page1 h2 {
+        font-size: 30px;
+        font-weight: 900;
+        margin: 50px 0 20px 0;
+      }
+      .page1 p {
+        width: 46%;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .page2 {
+        width: 100%;
+        height: 100vh;
+        z-index: 10;
+        overflow-y: hidden;
+      }
+      .scroller {
+        white-space: nowrap;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        position: relative;
+      }
+      .scroller::-webkit-scrollbar {
+        display: none;
+      }
+      .scroller-in {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scroll;
+        animation-duration: 30s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      .scroller h4 {
+        display: inline-block;
+        font-size: 120px;
+        font-weight: 900;
+        -webkit-text-stroke: 2px #95c11e;
+        color: transparent;
+        transition: all linear 0.5s;
+        z-index: 10;
+      }
+      .scroller h4:hover {
+        color: #76e014;
+      }
+      @keyframes scroll {
+        from {
+          transform: translate(0);
+        }
+        to {
+          transform: translate(-100%);
+        }
+      }
+      .about {
+        margin-top: 30px;
+        height: 40vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 50px;
+      }
+      .about img {
+        border-radius: 20px;
+        object-fit: cover;
+      }
+      .about-in {
+        width: 50%;
+        height: 100%;
+        text-align: center;
+      }
+      .about-in h3 {
+        font-size: 50px;
+        font-weight: 800;
+      }
+      .about-in p {
+        font-size: 23px;
+        line-height: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <img
+        src="https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/logo-white.svg"
+        alt=""
+      />
+      <h4>TOPTRACER RANGE</h4>
+      <h4>GOLF LESSONS</h4>
+      <h4>ADVENTURE GOLF</h4>
+      <h4>CAFE</h4>
+      <h4>EVENTS</h4>
+    </div>
+    <div class="cursor"></div>
+    <div class="cursor-blur"></div>
+    <video
+      autoplay
+      muted
+      loop
+      src="https://sidcupfamilygolf.com/wp-content/uploads/2023/02/hero.mp4"
+    ></video>
+    <div class="main">
+      <div class="page1">
+        <h1>EAT. DRINK. PLAY.</h1>
+        <h2>WELCOME TO SIDCUP FAMILY GOLF!</h2>
+        <p>
+          Sidcup Family Golf is a Toptracer driving range and crazy golf venue
+          in Sidcup, South East London. Passionate about technology, player
+          development and making golf fun and accessible to everyone.
+        </p>
+      </div>
+      <div class="page2">
+        <div class="scroller">
+          <div class="scroller-in">
+            <h4>TOPTRACER RANGE</h4>
+            <h4>GOLF LESSONS</h4>
+            <h4>ADVENTURE GOLF</h4>
+            <h4>CAFE</h4>
+            <h4>EVENTS</h4>
+          </div>
+          <div class="scroller-in">
+            <h4>TOPTRACER RANGE</h4>
+            <h4>GOLF LESSONS</h4>
+            <h4>ADVENTURE GOLF</h4>
+            <h4>CAFE</h4>
+            <h4>EVENTS</h4>
+          </div>
+        </div>
+        <div class="about">
+          <img src="img/shirt1.jpg" alt="" width="150px" height="55%" />
+          <div class="about-in">
+            <h3>ABOUT US</h3>
+            <p>
+              Home to a 46-bay, multi-tier, floodlit driving range, powered by
+              Toptracer Range technology. Complimented by a practice green and
+              bunker, coffee shop and American Golf Store. There truly is
+              something for everyone as we also boast two outdoor 18-hole
+              dinosaur themed crazy golf courses.
+
+              <br /><br />
+              Please note: we are a cashless venue. The range closes at 10pm
+              with last balls at 9pm.
+            </p>
+          </div>
+          <img src="img/shirt2.jpg" alt="" width="150px" height="55%" />
+        </div>
+        <div class="cards-container">
+          <div class="card" id="card1"></div>
+          <div class="card" id="card2"></div>
+          <div class="card" id="card3"></div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+  <script>
+    var crsr = document.querySelector(".cursor");
+    var crsrb = document.querySelector(".cursor-blur");
+    document.addEventListener("mousemove", function (dets) {
+      crsr.style.left = dets.x + "px";
+      crsr.style.top = dets.y + "px";
+      crsrb.style.left = dets.x - 200 + "px";
+      crsrb.style.top = dets.y - 200 + "px";
+    });
+
+    gsap.to(".nav", {
+      backgroundColor: "#000",
+      duration: 0.5, //if not given also works😂
+      height: "120px", //height of nav for this so that moving nav items up and down when scrolled.
+      scrollTrigger: {
+        trigger: ".nav",
+        scroller: "body", //to scroll whom
+        markers: true, //markers start in top right
+        start: "top -10%",
+        end: "top -11%",
+        scrub: 2, //to repeat else only once
+      },
+    });
+    gsap.to(".main", {
+      backgroundColor: "#000",
+      scrollTrigger: {
+        trigger: ".main",
+        scroller: "body",
+        markers: true,
+        start: "top -20%",
+        end: "top -60%",
+        scrub: 2,
+      },
+    });
+  </script>
+</html>

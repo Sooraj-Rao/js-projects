@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color:black;
+        position: relative;
+      }
+      .body {
+        display: flex;
+        justify-content: center;
+      }
+      .text {
+        margin: 20vh 0 0 0;
+        width: 20vw;
+        height: 7vh;
+        font-family: arial;
+        font-size: 30px;
+        padding: 5px 20px;
+        background-color: white;
+        position: relative;
+        font-weight: bold;
+        box-shadow: 0px 0px 10px 1px red;
+      }
+      .icon {
+        box-shadow: 0px 0px 10px 1px red;
+        width: 70px;
+        height: 7vh;
+        margin: 20vh 0 0 0vh;
+        cursor: pointer;
+        background: white;
+      }
+      .icon img {
+        margin: 10px 18px;
+      }
+      .display {
+        position: absolute;
+        width: 25vw;
+        height: 0vh;
+        left: 37.5vw;
+        top: 30vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .i {
+        width: 100%;
+        height: 10vh;
+        position: relative;
+      }
+      .i img {
+        position: absolute;
+        width: 30px;
+        left: 30px;
+        top: 20px;
+      }
+      .i h1 {
+        position: absolute;
+        left: 80px;
+        top: -2px;
+        font-family: arial;
+        font-size: 30px;
+      }
+      .i:hover{
+        background-color: rgb(255, 103, 32);
+      }
+
+      @media screen and (max-width:567px) and (min-width:200px){
+        .text{
+          width: 50vw;
+          font-size: 20px;
+          padding: 20px;
+        }
+        .icon{
+          padding: 6px 0 0 0 ;
+        }
+        .display {
+        width: 67vw;
+        left:15vw;
+        }
+        .i h1{
+          font-size: 20px;
+          top:10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="body">
+      <div class="text"></div>
+      <div class="icon">
+        <img id="img" src="img/downn.png" width="30px" />
+      </div>
+    </div>
+    <div class="display">
+      <div class="insta i">
+        <img src="img/insta.png" />
+        <h1>Instagram</h1>
+      </div>
+      <div class="fb i">
+        <img src="img/fb.png" />
+        <h1>Facebook</h1>
+      </div>
+      <div class="pint i">
+        <img src="img/pint.png" />
+        <h1>Pinterest</h1>
+      </div>
+      <div class="twit i">
+        <img src="img/twitter.png" />
+        <h1>Twitter</h1>
+      </div>
+      <div class="link i">
+        <img src="img/lindedin.png" />
+        <h1>LinkedIn</h1>
+      </div>
+    </div>
+  </body>
+  <script>
+    let x = true;
+    let text = document.getElementsByClassName("text")[0];
+    let arrow = document.getElementsByClassName("icon")[0];
+    let img=document.getElementById('img');
+    let display = document.getElementsByClassName("display")[0];
+    let val = document.querySelectorAll(".i");
+
+    let arr=() => {
+      if (x) {
+        img.style.transform = "rotate(180deg)";
+        img.style.transition = "1s";
+        show();
+        x = false;
+      } else {
+        img.style.transform = "rotate(0deg)";
+        img.style.transition = "1s";
+        hide();
+        x = true;
+      }
+    };
+
+    arrow.addEventListener("click", arr)
+
+    let show = () => {
+      display.style.height = "50vh";
+      display.style.transition = "1s";
+    };
+    let hide = () => {
+      display.style.height = "0vh";
+    };
+
+    val.forEach((element) => {
+      element.addEventListener("click", () => {
+        text.innerText = element.innerText;
+        arr();
+      });
+    });
+  </script>
+</html>

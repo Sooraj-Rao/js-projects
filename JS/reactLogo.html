@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: rgb(59, 57, 57);
+    }
+
+    .main {
+        height: 90vh;
+        width: 90vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .roti {
+        height: 250px;
+        width: 250px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: ani 15s infinite linear;
+    }
+
+    .one {
+        height: 200px;
+        width: 70px;
+        border: 10px solid rgb(13, 193, 199);
+        border-radius: 50%;
+
+    }
+
+    .two {
+        position: absolute;
+        transform: rotate(60deg);
+        height: 200px;
+        width: 70px;
+        border: 10px solid rgb(13, 193, 199);
+        border-radius: 50%;
+    }
+
+    .thr {
+        position: absolute;
+        transform: rotate(120deg);
+        height: 200px;
+        width: 70px;
+        border: 10px solid rgb(13, 193, 199);
+        border-radius: 50%;
+    }
+
+    .fou {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        background-color: rgb(13, 193, 199);
+        border-radius: 50%;
+
+    }
+
+    @keyframes ani {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(90deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        75% {
+            transform: rotate(270deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+
+
+
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="roti">
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="thr"></div>
+            <div class="fou"></div>
+        </div>
+    </div>
+</body>
+
+</html>

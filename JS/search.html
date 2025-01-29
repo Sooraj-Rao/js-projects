@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            display: flex;
+            justify-content: space-between;
+        }
+        .filters{
+            display: flex;;
+            margin:30px  10vw 0 0;
+            font-size: 20px;
+         
+        }
+        .search{
+            margin:30px auto;
+           
+        }
+        .search input{
+            width: 200px;
+            height: 40px;
+            outline: none;
+            border: 1px solid black;
+            font-size: 15px;
+            padding-left: 5px;
+        }
+        .btn{
+            width: 70px;
+            height: 40px;
+            background: orange;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .filter{
+            margin: 0px 30px;
+            cursor: pointer;
+            background-color: orange;
+            height: 40px;
+            padding: 8px;
+        }
+        .productsList{
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .product-item{
+            height: 20vh;
+            padding: 20px;
+            width: 15vw;
+            box-shadow: 3px 3px 10px 2px black;
+        }
+        .product-item p{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search">
+            <input type="text" placeholder="Search for item.." id="input">
+            <button type="button" class="btn">Search</button>
+        </div>
+        <div class="filters">
+            <div class="filter">All products</div>
+            <div class="filter">Electronics</div>
+            <div class="filter">Clothing</div>
+            <div class="filter">Home Garden</div>
+        </div>
+    </div>
+        <div class="productsList">
+        <div class="product-item" data-category="Smartphone">
+            <h2>Smartphone</h2>
+            <p>The Smartphone is a very useful device</p>
+        </div>
+        <div class="product-item" data-category="Tshirt">
+            <h2>Tshirt</h2>
+            <p>The Tshirt is a very useful device</p>
+        </div>
+        <div class="product-item" data-category="CoffeeMaker">
+            <h2>CoffeeMaker</h2>
+            <p>The CoffeeMaker is a very useful device</p>
+        </div>
+        <div class="product-item" data-category="Laptop">
+            <h2>Laptop</h2>
+            <p>The Laptop is a very useful device</p>
+        </div>
+        <div class="product-item" data-category="Blender">
+            <h2>Blender</h2>
+            <p>The Blender is a very useful device</p>
+        </div>
+        </div>
+    
+</body>
+<script>
+    let productsList = document.getElementsByClassName("productsList")[0];
+    let searchInput=document.getElementById("input");
+    let searchBtn=document.getElementsByClassName('btn')[0];
+    let catogoryBtns=document.querySelectorAll(".filter")
+
+    function filterProducts(){
+        const searchValue=searchInput.value.toLowerCase();
+        const productItems=document.querySelectorAll(".product-item");
+
+        productItems.forEach(item=>{
+            const title=item.querySelector("h2").innerText.toLowerCase();
+            const category=item.dataset.category;
+
+            if(title.includes(searchValue) || searchValue==""){
+                item.style.display="block";
+            }else{
+                item.style.display="none";
+            }
+        })
+    }
+
+    searchBtn.addEventListener("click",filterProducts);
+    searchInput.addEventListener("keyup",filterProducts);
+  
+
+
+    filterProducts();
+</script>
+</html>

@@ -1,0 +1,58 @@
+Didnt Understand This Shit..
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Age Calculator</title>
+</head>
+<body>
+  <label for="birthdate">Enter your birthdate:</label>
+  <input type="date" id="birthdate">
+  <button id="calculateButton">Calculate Age</button>
+  <p id="ageResult"></p>
+
+  <script>
+    // Get references to the HTML elements we will use
+    let calculateButton = document.getElementById("calculateButton");
+    let birthdateInput = document.getElementById("birthdate");
+    let ageResult = document.getElementById("ageResult");
+
+    // Add an event listener to the "Calculate Age" button
+    calculateButton.addEventListener("click", () => {
+      // Get the user's birthdate from the input field
+      let birthdate = new Date(birthdateInput.value);
+      let today = new Date(); // Get the current date
+
+      // Check if the user entered a valid birthdate
+      if (isNaN(birthdate)) {
+        ageResult.textContent = "Please enter a valid birthdate.";
+        return; // Exit the function if birthdate is not valid
+      }
+
+      // Calculate the difference in years, months, and days
+      let yearsDiff = today.getFullYear() - birthdate.getFullYear();
+      let monthsDiff = today.getMonth() - birthdate.getMonth();
+      let daysDiff = today.getDate() - birthdate.getDate();
+
+      // Adjust the age if the birthdate's month or day is ahead of the current month or day
+      if (monthsDiff < 0 || (monthsDiff === 0 && daysDiff < 0)) {
+        yearsDiff--;
+      }
+
+      // If the birthdate's month is ahead of the current month, adjust monthsDiff
+      if (monthsDiff < 0) {
+        monthsDiff += 12;
+      }
+
+      // If the birthdate's day is ahead of the current day, adjust daysDiff and monthsDiff
+      if (daysDiff < 0) {
+        let lastMonthDays = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+        daysDiff += lastMonthDays;
+        monthsDiff--;
+      }
+
+      // Display the calculated age in the HTML element
+      ageResult.textContent = `Your age is ${yearsDiff} years, ${monthsDiff} months, and ${daysDiff} days.`;
+    });
+  </script>
+</body>
+</html>

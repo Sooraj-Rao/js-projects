@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      form {
+        display: flex;
+        margin-bottom: 20px;
+      }
+
+      input {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #f9f9f9;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      li span {
+        flex: 1;
+      }
+
+      li button {
+        padding: 5px 10px;
+        font-size: 14px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+
+      li button:hover {
+        background-color: #d32f2f;
+      }
+
+      li button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.5);
+      }
+
+      li:hover {
+        background-color: #e8e8e8;
+        transform: translateX(5px);
+      }
+
+      li:hover button {
+        background-color: #c62828;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <form>
+      <input type="text" placeholder="Enter new todo" />
+      <button type="submit">Add</button>
+    </form>
+    <ul class="todo-list"></ul>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<script>
+  // Selecting DOM elements
+  const form = document.querySelector("form");
+  const input = document.querySelector("input");
+  const todoList = document.querySelector(".todo-list");
+
+  // Function to create a new todo item
+  function createTodoItem(text) {
+    const todoItem = document.createElement("li");
+    todoItem.textContent = text;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+      todoItem.remove();
+      updateLocalStorage();
+    });
+
+    todoItem.appendChild(deleteButton);
+    return todoItem;
+  }
+
+  // Function to handle form submission
+  function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const todoText = input.value.trim();
+
+    if (todoText !== "") {
+      const todoItem = createTodoItem(todoText);
+      todoList.appendChild(todoItem);
+      updateLocalStorage();
+      input.value = "";
+    }
+  }
+
+  // Function to update local storage
+  function updateLocalStorage() {
+    const todoItems = Array.from(todoList.children).map(
+      (item) => item.textContent
+    );
+    localStorage.setItem("todos", JSON.stringify(todoItems));
+  }
+
+  // Function to load todo items from local storage
+  function loadTodoItems() {
+    const storedItems = JSON.parse(localStorage.getItem("todos"));
+a
+    if (storedItems) {
+      storedItems.forEach((item) => {
+        const todoItem = createTodoItem(item);
+        todoList.appendChild(todoItem);
+      });
+    }
+  }
+
+  // Event listener for form submission
+  form.addEventListener("submit", handleFormSubmit);
+
+  // Load todo items from local storage on page load
+  document.addEventListener("DOMContentLoaded", loadTodoItems);
+</script>

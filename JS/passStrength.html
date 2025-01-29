@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body{
+        margin: 0;
+    }
+    .main{
+        font-family: sans-serif;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content:center;
+        flex-direction: column;
+        align-items:center;
+        background-color: rgb(0, 0, 0);
+}
+input{
+    height: 50px;
+    width: 300px;
+    font-size: 25px;
+    border: 3px solid rgb(201, 197, 197);
+    outline:none;
+    padding-left: 10px;
+    border-radius: 3px;
+    background: transparent;
+}
+h3{
+    height: 30px;
+    width: 300px ;
+    color: white;
+    margin-top: 2px;
+   
+}
+</style>
+</head>
+<body>
+    <div class="main">
+        <input type="text" name="" id="">
+        <h3></h3>
+    </div>
+</body>
+<script>
+    let doc=document.getElementsByTagName('input')[0];
+    let h=document.getElementsByTagName('h3')[0];
+    doc.addEventListener("keyup",()=>{
+     let len=doc.value.length ;  
+     if(len==0){
+        h.innerText="Please enter password";
+        h.style.color="red";
+        }
+    else if(len<5){
+        doc.style.color="red";
+        doc.style.borderColor="red";
+        h.innerText="password is weak";
+        h.style.color="red";
+    }else if(len<=7 && len >=5){
+        doc.style.color="green";
+        doc.style.borderColor="rgb(235, 176, 105)";
+        h.innerText="password is medium";
+        h.style.color="green";
+    }else if(len >8){
+        doc.style.color="green";
+        doc.style.borderColor="green";
+        h.innerText="password is strong";
+    }
+
+
+    })
+</script>
+</html>

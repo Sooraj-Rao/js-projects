@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: linear-gradient(90deg, rgb(12, 12, 115), rgb(72, 42, 46));
+        }
+
+        .main {
+            margin: 60px auto;
+            height: 82vh;
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 50px;
+            color: wheat;
+        }
+
+        textarea {
+            border-radius: 10px;
+            font-size: 20px;
+            min-width: 40vw;
+            max-width: 40vw;
+            padding: 2%;
+            min-height: 300px;
+            max-height: 300px;
+            margin-top: 40px;
+            background-color: #403d84;
+            border: none;
+            outline: none;
+            color: white;
+        }
+
+        .inner {
+            position: relative;
+            height: 20vh;
+            margin-top: 6%;
+            width: 80%;
+        }
+
+        select {
+            width: 25vw;
+            left: 0;
+            position: absolute;
+            height: 50px;
+            border-radius: 10px;
+            background-color: #403d84;
+        }
+
+        button {
+            color: white;
+            position: absolute;
+            height: 7vh;
+            width: 15vw;
+            border-radius: 10px;
+            right: 0;
+            background-color: rgb(255, 16, 96);
+            font-size: 25px;
+            outline: none;
+            border: none;
+        }
+        @media (max-width:600px){
+            .main{
+                width: 90vw;
+                text-align: center;
+            }
+            h2{
+                font-size: 5vh;
+            }
+            textarea{
+                max-width: 90vw;
+            }
+            .inner{
+                display: flex;
+                justify-content:space-between;
+                width: 65vw;
+            }
+            select{
+                width: 45vw;
+                height: 5vh;
+            }
+            button{
+                font-size: 2vh;
+                height: 5vh;
+                width: 20vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h2>Text to Speech Converter</h2>
+        <textarea placeholder="Write anything here..."></textarea>
+        <div class="inner">
+            <select></select>
+            <button>PLAY</button>
+        </div>
+    </div>
+</body>
+<script>
+    let voices = [];
+    let voiceselect = document.querySelector("select");
+    window.speechSynthesis.onvoiceschanged = () => {
+        voices = window.speechSynthesis.getVoices();
+        speech.voice = voices[0];
+
+        voices.forEach((voice, i) => (voiceselect.options[i] = new Option(voice.name, i)))
+    };
+    voiceselect.addEventListener("change",()=>{
+        speech.voice=voices[voiceselect.value]
+    })
+    let speech = new SpeechSynthesisUtterance();
+    document.querySelector("button").addEventListener("click", () => {
+        speech.text = document.querySelector("textarea").value;
+        window.speechSynthesis.speak(speech);
+    })
+</script>
+
+</html>

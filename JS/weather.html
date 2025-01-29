@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            box-shadow: 3px 3px 10px -3px black;
+            margin: 100px auto;
+            width: 30vw;
+            height: 55vh;
+            padding: 10px;
+        }
+        .input{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+            margin:20px 0px ;
+        }
+        .input .text{
+            margin-right: 10px;
+            height: 40px;
+            width: 40%;
+            border-color: black;
+            border-radius: 30px;
+            padding-left: 10px;
+            font-size: 18px;
+        }
+        .input .button{
+            height: 40px;
+            width: 70px;
+            border-radius: 30px;
+            background: black;
+            color: white;
+        }
+        .result{
+            color: black;
+            height: 35vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .o{
+            margin: 15px 0 0 0;
+        }
+        .o1 {
+            font-size: 30px;
+        }
+     @media (max-width:600px){
+      .container{
+        width: 90vw;
+        height: 50vh;
+        box-shadow: 0px 0px 10px 1px red;
+      }
+      .input{
+        justify-content:space-evenly ;
+     
+      }
+      .input .text{
+        width: 50vw;
+        font-size: 2.4vh;
+      }
+     }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="input">
+        <input type="text" name="" class="text" placeholder="Enter city name.." autofocus />
+        <input type="button" value="Check" class="button"/>
+      </div>
+      <div class="result">
+        <div class="icon o"></div>
+        <div class="place o o1"></div>
+        <div class="temp o o1"></div>
+        <div class="desc o" style="font-size: 20px;"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const apikey=`9afe3928e2688c7693b4450000c4d270`;
+    const api="https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}"
+
+    let Text=document.querySelector('.text')
+    let Btn=document.querySelector('.button')
+    let Icon=document.querySelector('.icon')
+    let Place=document.querySelector('.place')
+    let Temp=document.querySelector('.temp')
+    let Desc=document.querySelector('.desc')
+
+    Btn.addEventListener('click',() =>{
+        let city=Text.value;
+        Text.value="";
+        getweather(city);
+    })
+    const getweather = (city) =>{
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
+        .then(response => response.json())
+        .then(data =>{
+         console.log(data);
+        const iconcode=data.weather[0].icon;
+        Icon.innerHTML=`<img src="http://openweathermap.org/img/wn/${iconcode}.png" alt="Waether icon"/>`
+        const weatherplace=data.name;
+        const weathercountry=data.sys.country;
+        Place.innerHTML=`${weatherplace}, ${weathercountry}`;
+        const temp=data.main.temp-273;
+        temper=temp.toFixed(2);
+        Temp.innerHTML=`${temper} °C`;
+        desc=data.weather[0].description;
+        Desc.innerHTML=`${desc}`;    
+     } ).catch((value)=>{
+        Icon.innerHTML="";
+        Place.innerHTML=`Place Not Found !`;    
+        Temp.innerHTML="";
+        Desc.innerHTML="";
+     })
+    }
+
+</script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        color: white;
+        font-family: arial;
+      }
+      .main {
+        width: 30vw;
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        margin: 100px auto;
+        background-color: rgb(0, 0, 0);
+        box-shadow: 0px 0px 20px 1px black;
+      }
+      .heading {
+        width: 100%;
+        height: 10vh;
+      }
+      .heading h1 {
+        text-align: center;
+      }
+      .body {
+        height: 15vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .display {
+        height: 15vh;
+      }
+      body input {
+        margin: 2vw;
+        height: 5vh;
+        width: 15vw;
+        border-radius: 30px;
+        border: none;
+        font-size: 20px;
+        color: black;
+        border-color: white;
+      }
+      #button {
+        width: 5vw;
+        color: white;
+        background-color: red;
+      }
+      .display {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #main {
+        font-size: 20px;
+      }
+      .heading h1 {
+        text-shadow: 2px 2px red;
+      }
+
+      @media only screen and (min-width: 200px) and (max-width: 567px) {
+        .main {
+          width: 95%;
+          height: auto;
+        }
+        body input {
+          width: 50%;
+        }
+        #button {
+          width: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="heading">
+        <h1>Guess My Number (1-100)</h1>
+      </div>
+      <div class="body">
+        <input type="text" />
+        <input id="button" type="button" value="Click" />
+      </div>
+      <div class="display">
+        <p id="main">Start Guessing..😄</p>
+        <p>Score:0</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    let text = document.getElementsByTagName("input")[0];
+    let button = document.getElementById("button");
+    let result = document.getElementById("main");
+    let guess = document.getElementsByTagName("p")[1];
+
+    let ran = Math.floor(Math.random() * 100);
+    let guessed = 100;
+    button.addEventListener("click", () => {
+      let num;
+      num = Number.parseInt(text.value);
+      console.log(typeof num);
+      if(isNaN(num) || num ==null){
+        result.innerHTML = "Please enter a number"; 
+      }
+      else if (num == ran ) {
+        result.innerHTML = "Your guess was correct";
+        guess.innerHTML = "Your Final Score is: " + guessed;
+      }
+      else if (num < ran && guessed>0) {
+        result.innerHTML = `${num} less than my number`;
+        guessed--;
+        guess.innerHTML = "Score: " + guessed;
+      } else if (num > ran && guessed>0) {
+        result.innerHTML = `${num} greater than my number`;
+        guessed--;
+        guess.innerHTML = "Score: " + guessed;
+      }else{
+        result.innerHTML = `You Lose`; 
+        console.log(num,typeof num);
+      }
+      console.log(num,typeof num);
+  })
+  
+  </script>
+</html>
